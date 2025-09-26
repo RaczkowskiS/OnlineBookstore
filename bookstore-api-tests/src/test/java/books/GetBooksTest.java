@@ -1,9 +1,9 @@
 package books;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static rest.util.ResponseMapper.getResponseBody;
 
 import java.time.Instant;
@@ -37,8 +37,8 @@ public class GetBooksTest extends BaseTest {
 	      
 	      Allure.step("Assert size of book list");
 	      var body = getResponseBody(response);
-	      assertTrue("Response should be a list", body.isArray());
-	      assertTrue("Book list shouldn't be empty", body.size() > 0);
+	      assertTrue(body.isArray(), "Response should be a list");
+	      assertTrue(body.size() > 0, "Book list shouldn't be empty");
 	      
 	      Allure.step("Validate book list structure");
 	      for (int bookIndex = 0; bookIndex<body.size(); bookIndex++) {
@@ -49,10 +49,10 @@ public class GetBooksTest extends BaseTest {
 	
 	private void checkBookStructure(JsonNode book) {
 		assertDoesNotThrow(() -> Integer.parseInt(book.get("id").asText()), "id isn't a number");
-		assertNotNull("title field doesn't exist", book.get("title"));
-		assertNotNull("description field doesn't exist", book.get("description"));
+		assertNotNull("title field doesn't exist", book.get("title").asText());
+		assertNotNull("description field doesn't exist", book.get("description").asText());
 		assertDoesNotThrow(() -> book.get("pageCount").asInt(), "id isn't a number");
-		assertNotNull("excerpt field doesn't exist", book.get("excerpt"));
+		assertNotNull("excerpt field doesn't exist", book.get("excerpt").asText());
 		assertDoesNotThrow(() -> Instant.parse(book.get("publishDate").asText()));
 	}
 }

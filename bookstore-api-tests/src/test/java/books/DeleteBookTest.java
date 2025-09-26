@@ -1,9 +1,6 @@
 package books;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static rest.util.ResponseMapper.getResponseBody;
-
-import java.time.Instant;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -15,7 +12,6 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import okhttp3.Response;
-import rest.model.PutBookRequest;
 
 @Epic("Bookstore API")
 @Feature("Books")
