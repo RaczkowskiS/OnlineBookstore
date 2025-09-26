@@ -1,9 +1,9 @@
 package books;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static rest.util.ResponseMapper.getResponseBody;
 
 import java.time.Instant;
@@ -66,9 +66,9 @@ public class GetBookTest extends BaseTest {
 	}
 	
 	private void validateNotFoundMessage(JsonNode response) {
-		assertNotNull("type field doesn't exist", response.get("type"));
+		assertNotNull("type field doesn't exist", response.get("type").asText());
 		assertEquals("Not Found", response.get("title").asText());
 		assertEquals(404, response.get("status").asInt());
-		assertNotNull("traceId field doesn't exist", response.get("traceId"));
+		assertNotNull("traceId field doesn't exist", response.get("traceId").asText());
 	}
 }
