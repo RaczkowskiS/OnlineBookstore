@@ -14,7 +14,7 @@ public class OnlineBookstoreClient {
 	}
 	
 	public Response addBook(PostBookRequest request) {
-		return http.post("/Books", request.GetRequestBody());
+		return http.post("/Books", request.getRequestBody());
 	}
 	
 	public Response addBook(String request) {
@@ -26,7 +26,7 @@ public class OnlineBookstoreClient {
 	}
 	
 	public Response editBook(int id, PutBookRequest request) {
-		return http.put("/Books/" + id, request.GetRequestBody());
+		return http.put("/Books/" + id, request.getRequestBody());
 	}
 	
 	public Response editBook(int id, String request) {

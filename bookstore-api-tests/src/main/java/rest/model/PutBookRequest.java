@@ -67,17 +67,8 @@ public class PutBookRequest implements IRequestModel {
 	}
 	
 	@Override
-	public String GetRequestBody() {
-		return new BodyHelper()
-			.addBodyPrefix()
-			.addBodyFieldMiddle("id", id)
-			.addBodyFieldMiddle("title", title)
-			.addBodyFieldMiddle("description", description)
-			.addBodyFieldMiddle("pageCount", pageCount)
-			.addBodyFieldMiddle("excerpt", excerpt)
-	        .addBodyFieldLast("publishDate", publishDate)
-	        .addBodySuffix()
-	        .getBody();
+	public String getRequestBody() {
+		return BodyHelper.GSON.toJson(this);
 	}
 
 }
